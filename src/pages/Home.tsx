@@ -45,11 +45,11 @@ const Home: React.FC = () => {
   const getGridLayout = () => {
     switch (currentTheme) {
       case 'theme1':
-        return 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-3'; // Compact grid for Theme 1
+        return 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-3';
       case 'theme2':
-        return 'grid-cols-1'; // Single column for Theme 2 (sidebar layout)
+        return 'grid-cols-1';
       case 'theme3':
-        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3'; // Spacious grid for Theme 3
+        return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3';
       default:
         return 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
     }
@@ -58,34 +58,63 @@ const Home: React.FC = () => {
   const getGridGap = () => {
     switch (currentTheme) {
       case 'theme1':
-        return 'gap-4'; // Compact gap for Theme 1
+        return 'gap-4';
       case 'theme2':
-        return 'gap-6'; // Standard gap for Theme 2
+        return 'gap-6';
       case 'theme3':
-        return 'gap-8'; // Larger gap for Theme 3
+        return 'gap-8';
       default:
         return 'gap-6';
     }
   };
 
+  
+  const getContainerClasses = () => {
+    const baseClasses = `pt-20 min-h-screen ${theme.colors.background} ${theme.typography.fontFamily} ${theme.layout.transition} animate-fade-in`;
+    
+    if (currentTheme === 'theme2') {
+      return `${baseClasses} theme-2-stars`;
+    }
+    
+    return baseClasses;
+  };
+
   return (
-    <div className={`pt-20 min-h-screen ${theme.colors.background} ${theme.typography.fontFamily} ${theme.layout.transition} animate-fade-in`}>
-      <div className={`${theme.layout.maxWidth} mx-auto ${theme.spacing.lg}`}>
+    <div className={getContainerClasses()}>
+  
+      {currentTheme === 'theme2' && (
+        <>
+          <div className="theme-2-stars-layer-1" />
+          <div className="theme-2-stars-layer-2" />
+          <div className="theme-2-stars-layer-3" />
+        
+          <div className="theme-2-meteor" />
+          <div className="theme-2-meteor" />
+          <div className="theme-2-meteor" />
+          <div className="theme-2-meteor" />
+          <div className="theme-2-meteor" />
+        </>
+      )}
+      
+      
+      <div className={`${theme.layout.maxWidth} mx-auto ${theme.spacing.lg} ${
+        currentTheme === 'theme2' ? 'theme-2-content' : ''
+      }`}>
         <h1 className={`${theme.typography.fontSize.xlarge} ${theme.typography.fontWeight.bold} ${theme.colors.text} mb-6 text-center ${getTitleAnimation()}`}>
           {currentTheme === 'theme1' && 'Welcome to Our Store'}
-          {currentTheme === 'theme2' && 'Product Catalog'}
+          {currentTheme === 'theme2' && '✨ Stellar Product Catalog ✨'}
           {currentTheme === 'theme3' && '🎉 Amazing Products 🎉'}
         </h1>
         
         <p className={`${theme.typography.fontSize.medium} ${theme.colors.textSecondary} mb-8 text-center leading-relaxed animate-slide-up ${currentTheme === 'theme1' ? 'theme-1-text-animation' : ''}`} style={{ animationDelay: '0.2s' }}>
           {currentTheme === 'theme1' && 'Discover our collection of high-quality products with minimalist design and excellent value.'}
-          {currentTheme === 'theme2' && 'Explore our comprehensive catalog featuring premium items across various categories.'}
+          {currentTheme === 'theme2' && 'Navigate through our cosmic collection of premium items under the starlit sky.'}
           {currentTheme === 'theme3' && 'Get ready to be amazed by our colorful collection of fantastic products! 🌈✨'}
         </p>
 
         <button className={`${theme.colors.accent} ${theme.colors.surface} border-none ${theme.layout.borderRadius} px-6 py-3 ${theme.typography.fontSize.medium} ${theme.typography.fontWeight.bold} cursor-pointer ${theme.layout.transition} block mx-auto mb-8 hover:scale-105 hover:shadow-lg animate-bounce-in`} style={{ animationDelay: '0.4s' }}>
           {currentTheme === 'theme1' && 'Explore Products'}
-          {currentTheme === 'theme2' && 'Browse Catalog'}
+          {currentTheme === 'theme2' && '🌟 Explore Cosmos'}
           {currentTheme === 'theme3' && '🎯 Start Shopping!'}
         </button>
 
@@ -93,32 +122,32 @@ const Home: React.FC = () => {
           currentTheme === 'theme2' ? 'grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-6' : 'block'
         }`}>
           {currentTheme === 'theme2' && (
-            <aside className={`${theme.colors.surface} ${theme.spacing.lg} ${theme.colors.border} border-r animate-slide-up`} style={{ animationDelay: '0.6s' }}>
+            <aside className={`${theme.colors.surface} ${theme.spacing.lg} ${theme.colors.border} border-r animate-slide-up theme-2-backdrop`} style={{ animationDelay: '0.6s' }}>
               <h3 className={`${theme.typography.fontSize.large} ${theme.typography.fontWeight.bold} ${theme.colors.text} mb-4`}>
-                Categories
+                🌌 Categories
               </h3>
               {categories.map((category, index) => (
                 <div
                   key={category}
-                  className={`${theme.spacing.sm} mb-2 ${theme.layout.borderRadius} ${theme.colors.background} ${theme.colors.text} cursor-pointer ${theme.layout.transition} hover:bg-gray-200 dark:hover:bg-gray-600 hover:translate-x-2 transform duration-300`}
+                  className={`${theme.spacing.sm} mb-2 ${theme.layout.borderRadius} ${theme.colors.background} ${theme.colors.text} cursor-pointer ${theme.layout.transition} hover:bg-slate-700 hover:bg-opacity-80 hover:translate-x-2 transform duration-300 theme-2-backdrop`}
                   style={{ animationDelay: `${0.8 + index * 0.1}s` }}
                 >
-                  {category}
+                  ⭐ {category}
                 </div>
               ))}
             </aside>
           )}
 
-          <main>
+          <main className={currentTheme === 'theme2' ? 'theme-2-content' : ''}>
             {loading && (
               <div className={`text-center ${theme.typography.fontSize.large} ${theme.colors.textSecondary} ${theme.spacing.xl} animate-pulse-slow`}>
-                <div className="inline-block w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full spinner"></div>
-                <p className="mt-4">Loading products...</p>
+                <div className="inline-block w-8 h-8 border-4 border-cyan-400 border-t-transparent rounded-full spinner"></div>
+                <p className="mt-4">Loading cosmic products...</p>
               </div>
             )}
             
             {error && (
-              <div className={`text-center ${theme.typography.fontSize.medium} text-red-500 ${theme.spacing.lg} bg-red-50 ${theme.layout.borderRadius} border border-red-200 animate-bounce-in`}>
+              <div className={`text-center ${theme.typography.fontSize.medium} text-red-400 ${theme.spacing.lg} bg-red-900 bg-opacity-20 ${theme.layout.borderRadius} border border-red-500 animate-bounce-in ${currentTheme === 'theme2' ? 'theme-2-backdrop' : ''}`}>
                 {error}
               </div>
             )}
@@ -137,4 +166,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home; 
+export default Home;

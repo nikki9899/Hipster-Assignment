@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom styles */
+
 @layer base {
   body {
     @apply antialiased;
@@ -23,7 +23,7 @@
   }
 }
 
-/* Custom animations */
+
 @keyframes fadeIn {
   from { 
     opacity: 0;
@@ -94,7 +94,6 @@
   }
 }
 
-/* Theme 1 Word-by-Word Animation */
 .theme-1-word-text {
   display: inline-block;
   transition: color 0.2s ease;
@@ -106,7 +105,7 @@
   transition: color 0.1s ease;
 }
 
-/* Theme 1 Letter-by-Letter Animation */
+
 .theme-1-letter-text {
   display: inline-block;
   transition: color 0.1s ease;
@@ -118,7 +117,6 @@
   transition: color 0.05s ease;
 }
 
-/* Theme 1 Cursor Following Text Animation */
 .theme-1-cursor-text {
   transition: color 0.2s ease;
   position: relative;
@@ -148,13 +146,13 @@
   opacity: 1;
 }
 
-/* Theme 1 Text Color Flow Animation (for other elements) */
+
 @keyframes textColorFlow {
-  0% { color: #1f2937; } /* gray-800 */
-  25% { color: #3b82f6; } /* blue-500 */
-  50% { color: #10b981; } /* emerald-500 */
-  75% { color: #f59e0b; } /* amber-500 */
-  100% { color: #1f2937; } /* gray-800 */
+  0% { color: #1f2937; } 
+  25% { color: #3b82f6; } 
+  50% { color: #10b981; }
+  75% { color: #f59e0b; } 
+  100% { color: #1f2937; } 
 }
 
 .theme-1-text-animation {
@@ -167,7 +165,7 @@
   color: #3b82f6;
 }
 
-/* Theme 2 Glow Animation */
+
 @keyframes emeraldGlow {
   0%, 100% {
     text-shadow: 0 0 5px rgba(52, 211, 153, 0.3);
@@ -181,7 +179,7 @@
   animation: emeraldGlow 2s ease-in-out infinite;
 }
 
-/* Theme 2 Slide Animation */
+
 @keyframes theme2Slide {
   0% {
     transform: translateX(-100px);
@@ -197,7 +195,7 @@
   animation: theme2Slide 0.8s ease-out;
 }
 
-/* Theme 3 Bounce Animation */
+
 @keyframes playfulBounce {
   0%, 100% {
     transform: translateY(0);
@@ -207,11 +205,232 @@
   }
 }
 
+
+
+
+.theme-2-stars {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-2-stars::before,
+.theme-2-stars::after {
+  content: '';
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  width: 100%;
+  height: 200vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+.theme-2-stars::before {
+  background-image: 
+    radial-gradient(1px 1px at 10% 10%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 15% 25%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 35% 15%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 45% 35%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 55% 20%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 65% 45%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 75% 30%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 85% 10%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 95% 40%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 20% 60%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 30% 75%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 40% 90%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 50% 65%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 60% 80%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 70% 55%, rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 80% 70%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(1px 1px at 90% 85%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 5% 50%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 12% 95%, rgba(255,255,255,0.6), transparent);
+  background-repeat: repeat-y;
+  background-size: 100% 50vh;
+  animation: stars-fall-fast 8s linear infinite;
+}
+
+
+.theme-2-stars::after {
+  background-image: 
+    radial-gradient(2px 2px at 8% 12%, rgba(135, 206, 235, 0.9), transparent),
+    radial-gradient(2px 2px at 18% 28%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 28% 42%, rgba(135, 206, 235, 0.7), transparent),
+    radial-gradient(2px 2px at 38% 18%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 48% 38%, rgba(135, 206, 235, 0.8), transparent),
+    radial-gradient(2px 2px at 58% 22%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 68% 48%, rgba(135, 206, 235, 0.9), transparent),
+    radial-gradient(2px 2px at 78% 32%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 88% 12%, rgba(135, 206, 235, 0.7), transparent),
+    radial-gradient(2px 2px at 98% 42%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 22% 62%, rgba(135, 206, 235, 0.8), transparent),
+    radial-gradient(2px 2px at 32% 78%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(2px 2px at 42% 92%, rgba(135, 206, 235, 0.9), transparent),
+    radial-gradient(2px 2px at 52% 68%, rgba(255, 255, 255, 0.8), transparent),
+    radial-gradient(2px 2px at 62% 82%, rgba(135, 206, 235, 0.7), transparent),
+    radial-gradient(2px 2px at 72% 58%, rgba(255, 255, 255, 0.9), transparent),
+    radial-gradient(2px 2px at 82% 72%, rgba(135, 206, 235, 0.8), transparent),
+    radial-gradient(2px 2px at 92% 88%, rgba(255, 255, 255, 0.7), transparent);
+  background-repeat: repeat-y;
+  background-size: 100% 60vh;
+  animation: stars-fall-medium 12s linear infinite;
+}
+
+
+@keyframes stars-fall-fast {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+@keyframes stars-fall-medium {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.theme-2-stars-layer-1,
+.theme-2-stars-layer-2,
+.theme-2-stars-layer-3 {
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  width: 100%;
+  height: 200vh;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.theme-2-stars-layer-1 {
+  background-image: 
+    radial-gradient(3px 3px at 15% 20%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(3px 3px at 35% 50%, rgba(135, 206, 235, 0.5), transparent),
+    radial-gradient(3px 3px at 55% 30%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(3px 3px at 75% 60%, rgba(135, 206, 235, 0.6), transparent),
+    radial-gradient(3px 3px at 25% 80%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(3px 3px at 65% 10%, rgba(135, 206, 235, 0.7), transparent),
+    radial-gradient(3px 3px at 85% 40%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(3px 3px at 45% 70%, rgba(135, 206, 235, 0.5), transparent);
+  background-repeat: repeat-y;
+  background-size: 100% 80vh;
+  animation: stars-fall-slow 10ss linear infinite;
+}
+
+Tiny very fast stars
+.theme-2-stars-layer-2 {
+  background-image: 
+    radial-gradient(3px 3px at 15% 20%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(3px 3px at 35% 50%, rgba(135, 206, 235, 0.5), transparent),
+    radial-gradient(3px 3px at 55% 30%, rgba(255, 255, 255, 0.7), transparent),
+    radial-gradient(3px 3px at 75% 60%, rgba(135, 206, 235, 0.6), transparent),
+    radial-gradient(3px 3px at 25% 80%, rgba(255, 255, 255, 0.5), transparent),
+    radial-gradient(3px 3px at 65% 10%, rgba(135, 206, 235, 0.7), transparent),
+    radial-gradient(3px 3px at 85% 40%, rgba(255, 255, 255, 0.6), transparent),
+    radial-gradient(3px 3px at 45% 70%, rgba(135, 206, 235, 0.5), transparent);
+  background-repeat: repeat-y;
+  background-size: 100% 30vh;
+  animation: stars-fall-very-fast 5s linear infinite;
+}
+
+
+
+@keyframes stars-fall-slow {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes stars-fall-very-fast {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes stars-fall-twinkle {
+  0% { 
+    transform: translateY(0); 
+    opacity: 0.3;
+  }
+  25% { opacity: 1; }
+  50% { opacity: 0.5; }
+  75% { opacity: 0.8; }
+  100% { 
+    transform: translateY(100vh); 
+    opacity: 0.3;
+  }
+}
+
+
+.theme-2-content {
+  position: relative;
+  z-index: 10;
+}
+
+
+.theme-2-backdrop {
+  backdrop-filter: blur(1px);
+  background-color: rgba(15, 23, 42, 0.85);
+}
+
+
+.theme-2-meteor {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  background: linear-gradient(to bottom, rgba(255,255,255,1), transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 2;
+  animation: meteor-fall 2s ease-in infinite;
+  opacity: 0;
+}
+
+.theme-2-meteor:nth-child(1) { left: 10%; animation-delay: 0s; }
+.theme-2-meteor:nth-child(2) { left: 30%; animation-delay: 2s; }
+.theme-2-meteor:nth-child(3) { left: 50%; animation-delay: 4s; }
+.theme-2-meteor:nth-child(4) { left: 70%; animation-delay: 6s; }
+.theme-2-meteor:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+.theme-2-meteor::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.8), transparent);
+  transform: translateY(-80px);
+}
+
+@keyframes meteor-fall {
+  0% {
+    transform: translateY(-100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
 .theme-3-bounce {
   animation: playfulBounce 2s ease-in-out infinite;
 }
 
-/* Theme 3 Rotate Animation */
+
 @keyframes theme3Rotate {
   0% {
     transform: rotate(-5deg) scale(0.9);
@@ -230,22 +449,21 @@
   animation: theme3Rotate 0.8s ease-out;
 }
 
-/* Theme 3 Rainbow Animation */
 @keyframes rainbowText {
-  0% { color: #ef4444; } /* red */
-  16.66% { color: #f97316; } /* orange */
-  33.33% { color: #eab308; } /* yellow */
-  50% { color: #22c55e; } /* green */
-  66.66% { color: #3b82f6; } /* blue */
-  83.33% { color: #8b5cf6; } /* violet */
-  100% { color: #ef4444; } /* red */
+  0% { color: #ef4444; } 
+  16.66% { color: #f97316; } 
+  33.33% { color: #eab308; }
+  50% { color: #22c55e; } 
+  66.66% { color: #3b82f6; } 
+  83.33% { color: #8b5cf6; } 
+  100% { color: #ef4444; } 
 }
 
 .theme-3-rainbow {
   animation: rainbowText 4s linear infinite;
 }
 
-/* Animation classes */
+
 .animate-fade-in {
   animation: fadeIn 0.8s ease-out;
 }
@@ -288,7 +506,6 @@
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
 }
 
-/* Theme-specific animations */
 .theme-3-card {
   transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -298,7 +515,7 @@
   box-shadow: 0 20px 40px rgba(147, 51, 234, 0.2);
 }
 
-/* Loading spinner */
+
 .spinner {
   animation: spin 1s linear infinite;
 }
