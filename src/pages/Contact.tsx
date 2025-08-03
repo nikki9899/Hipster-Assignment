@@ -147,8 +147,8 @@ const Contact: React.FC = () => {
               <span>📍</span>
               <div className={getTextAnimation()}>
                 <strong>Address:</strong><br />
-                123 Business Street<br />
-                City, State 12345
+               75 Ayer Rajah Crescent,<br />
+                 #01-04 Singapore 139953
               </div>
             </div>
             <div className={`flex items-center gap-3 mb-4 ${theme.spacing.sm} ${theme.colors.background} ${theme.layout.borderRadius} ${getContactItemAnimation()}`} style={{ animationDelay: currentTheme === 'theme1' ? '0s' : '0.8s' }}>
@@ -162,7 +162,7 @@ const Contact: React.FC = () => {
               <span>📞</span>
               <div className={getTextAnimation()}>
                 <strong>Phone:</strong><br />
-                +1 (555) 123-4567
+               +6582668781
               </div>
             </div>
             <div className={`flex items-center gap-3 mb-4 ${theme.spacing.sm} ${theme.colors.background} ${theme.layout.borderRadius} ${getContactItemAnimation()}`} style={{ animationDelay: currentTheme === 'theme1' ? '0s' : '1.2s' }}>
