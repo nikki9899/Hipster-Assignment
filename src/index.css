@@ -1,0 +1,313 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles */
+@layer base {
+  body {
+    @apply antialiased;
+  }
+}
+
+@layer components {
+  .theme-transition {
+    @apply transition-all duration-500 ease-in-out;
+  }
+  
+  .card-hover {
+    @apply hover:transform hover:-translate-y-2 hover:shadow-xl transition-all duration-500 ease-out;
+  }
+  
+  .button-hover {
+    @apply hover:transform hover:-translate-y-1 hover:shadow-lg transition-all duration-300 ease-out;
+  }
+}
+
+/* Custom animations */
+@keyframes fadeIn {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from { 
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from { 
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bounceIn {
+  0% { 
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  50% { 
+    transform: scale(1.05);
+  }
+  70% { 
+    transform: scale(0.9);
+  }
+  100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  0% { 
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% { 
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Theme 1 Word-by-Word Animation */
+.theme-1-word-text {
+  display: inline-block;
+  transition: color 0.2s ease;
+  cursor: text;
+}
+
+.theme-1-word-text:hover {
+  color: #3b82f6 !important;
+  transition: color 0.1s ease;
+}
+
+/* Theme 1 Letter-by-Letter Animation */
+.theme-1-letter-text {
+  display: inline-block;
+  transition: color 0.1s ease;
+  cursor: text;
+}
+
+.theme-1-letter-text:hover {
+  color: #3b82f6 !important;
+  transition: color 0.05s ease;
+}
+
+/* Theme 1 Cursor Following Text Animation */
+.theme-1-cursor-text {
+  transition: color 0.2s ease;
+  position: relative;
+  display: inline;
+}
+
+.theme-1-cursor-text:hover {
+  color: #3b82f6;
+  transition: color 0.1s ease;
+}
+
+.theme-1-cursor-text::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.theme-1-cursor-text:hover::before {
+  opacity: 1;
+}
+
+/* Theme 1 Text Color Flow Animation (for other elements) */
+@keyframes textColorFlow {
+  0% { color: #1f2937; } /* gray-800 */
+  25% { color: #3b82f6; } /* blue-500 */
+  50% { color: #10b981; } /* emerald-500 */
+  75% { color: #f59e0b; } /* amber-500 */
+  100% { color: #1f2937; } /* gray-800 */
+}
+
+.theme-1-text-animation {
+  animation: textColorFlow 3s ease-in-out infinite;
+  transition: color 0.3s ease;
+}
+
+.theme-1-text-animation:hover {
+  animation-play-state: paused;
+  color: #3b82f6;
+}
+
+/* Theme 2 Glow Animation */
+@keyframes emeraldGlow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(52, 211, 153, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(52, 211, 153, 0.6), 0 0 30px rgba(52, 211, 153, 0.4);
+  }
+}
+
+.theme-2-glow {
+  animation: emeraldGlow 2s ease-in-out infinite;
+}
+
+/* Theme 2 Slide Animation */
+@keyframes theme2Slide {
+  0% {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.theme-2-slide {
+  animation: theme2Slide 0.8s ease-out;
+}
+
+/* Theme 3 Bounce Animation */
+@keyframes playfulBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.theme-3-bounce {
+  animation: playfulBounce 2s ease-in-out infinite;
+}
+
+/* Theme 3 Rotate Animation */
+@keyframes theme3Rotate {
+  0% {
+    transform: rotate(-5deg) scale(0.9);
+    opacity: 0;
+  }
+  50% {
+    transform: rotate(2deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.theme-3-rotate {
+  animation: theme3Rotate 0.8s ease-out;
+}
+
+/* Theme 3 Rainbow Animation */
+@keyframes rainbowText {
+  0% { color: #ef4444; } /* red */
+  16.66% { color: #f97316; } /* orange */
+  33.33% { color: #eab308; } /* yellow */
+  50% { color: #22c55e; } /* green */
+  66.66% { color: #3b82f6; } /* blue */
+  83.33% { color: #8b5cf6; } /* violet */
+  100% { color: #ef4444; } /* red */
+}
+
+.theme-3-rainbow {
+  animation: rainbowText 4s linear infinite;
+}
+
+/* Animation classes */
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+.animate-slide-down {
+  animation: slideDown 0.4s ease-out;
+}
+
+.animate-bounce-in {
+  animation: bounceIn 0.8s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* Hover animations */
+.hover-lift {
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hover-glow {
+  transition: all 0.3s ease-out;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+/* Theme-specific animations */
+.theme-3-card {
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.theme-3-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(147, 51, 234, 0.2);
+}
+
+/* Loading spinner */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} 

@@ -1,0 +1,25 @@
+
+# dependencies
+node_modules/
+
+# production
+build/
+dist/
+
+# misc
+.env
+.env.local
+*.log
+.DS_Store
+
+# system
+.vscode/
+*.swp
+
+# testing
+coverage/
+
+# OS
+Thumbs.db
+
+
