@@ -10,11 +10,17 @@ interface ProductCardProps {
 const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
   const { theme, currentTheme } = useTheme();
 
+  // Truncate text function
+  const truncateText = (text: string, maxLength: number) => {
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength) + '...';
+  };
+
   return (
     <div 
       className={`${theme.colors.surface} ${theme.colors.border} border ${theme.layout.borderRadius} ${theme.spacing.md} ${theme.shadow} cursor-pointer ${theme.layout.transition} ${
-        currentTheme === 'theme2' ? 'flex flex-row gap-4 min-h-[120px] hover-lift' : 
-        currentTheme === 'theme3' ? 'flex flex-col gap-3 theme-3-card' : 
+        currentTheme === 'theme2' ? 'flex flex-row gap-4 min-h-[120px] max-h-[140px] hover-lift overflow-hidden' : 
+        currentTheme === 'theme3' ? 'flex flex-col gap-3 theme-3-card max-h-[500px] overflow-hidden' : 
         'flex flex-col gap-3 hover-lift'
       } animate-slide-up`}
       style={{ animationDelay: `${index * 0.1}s` }}
@@ -23,7 +29,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
         src={product.image}
         alt={product.title}
         className={`${
-          currentTheme === 'theme2' ? 'w-20 h-20' : 'w-full h-48'
+          currentTheme === 'theme2' ? 'w-20 h-20 flex-shrink-0' : 'w-full h-48'
         } object-cover ${theme.layout.borderRadius} ${theme.colors.border} border ${theme.layout.transition} hover:scale-105 transform duration-500`}
         onError={(e) => {
           const target = e.target as HTMLImageElement;
@@ -31,26 +37,42 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
         }}
       />
       
-      <div className="flex-1 flex flex-col gap-2">
-        <h3 className={`${theme.typography.fontSize.medium} ${theme.typography.fontWeight.bold} ${theme.colors.text} m-0 leading-tight ${theme.layout.transition} hover:${theme.colors.accent} transform duration-300`}>
-          {product.title}
+      <div className={`flex-1 flex flex-col gap-2 ${currentTheme === 'theme2' || currentTheme === 'theme3' ? 'min-w-0' : ''} ${currentTheme === 'theme2' ? 'justify-between' : ''}`}>
+        <h3 className={`${theme.typography.fontSize.medium} ${theme.typography.fontWeight.bold} ${theme.colors.text} m-0 leading-tight ${theme.layout.transition} hover:${theme.colors.accent} transform duration-300 ${currentTheme === 'theme3' ? 'overflow-hidden' : ''}`}>
+          {currentTheme === 'theme2' ? (
+            <span className="block truncate" title={product.title}>
+              {truncateText(product.title, 40)}
+            </span>
+          ) : currentTheme === 'theme3' ? (
+            <span className="block truncate" title={product.title}>
+              {truncateText(product.title, 60)}
+            </span>
+          ) : (
+            product.title
+          )}
         </h3>
         
-        <p className={`${theme.typography.fontSize.small} ${theme.colors.textSecondary} m-0 leading-relaxed ${
+        <p className={`${theme.typography.fontSize.small} ${theme.colors.textSecondary} m-0 leading-relaxed ${currentTheme === 'theme3' ? 'overflow-hidden' : ''} ${
           currentTheme === 'theme2' ? 'hidden' : 'block'
         }`}>
-          {product.description}
+          {currentTheme === 'theme3' ? (
+            <span className="line-clamp-2" title={product.description}>
+              {truncateText(product.description, 100)}
+            </span>
+          ) : (
+            product.description
+          )}
         </p>
         
-        <div className={`${theme.typography.fontSize.small} ${theme.colors.textSecondary} flex items-center gap-2`}>
+        <div className={`${theme.typography.fontSize.small} ${theme.colors.textSecondary} flex items-center gap-2 flex-shrink-0`}>
           ⭐ {product.rating.rate} ({product.rating.count} reviews)
         </div>
         
-        <div className={`${theme.typography.fontSize.large} ${theme.typography.fontWeight.bold} ${theme.colors.accent} m-0 ${theme.layout.transition} hover:scale-105 transform duration-300`}>
+        <div className={`${theme.typography.fontSize.large} ${theme.typography.fontWeight.bold} ${theme.colors.accent} m-0 ${theme.layout.transition} hover:scale-105 transform duration-300 flex-shrink-0`}>
           ${product.price}
         </div>
         
-        <span className={`${theme.typography.fontSize.small} ${theme.colors.primary} ${theme.colors.background} px-3 py-1 ${theme.layout.borderRadius} inline-block mt-auto ${theme.layout.transition} hover:scale-105 transform duration-300`}>
+        <span className={`${theme.typography.fontSize.small} ${theme.colors.primary} ${theme.colors.background} px-3 py-1 ${theme.layout.borderRadius} inline-block mt-auto ${theme.layout.transition} hover:scale-105 transform duration-300 ${currentTheme === 'theme3' ? 'truncate max-w-full' : ''} flex-shrink-0`} title={currentTheme === 'theme3' ? product.category : undefined}>
           {product.category}
         </span>
       </div>
@@ -58,4 +80,4 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
   );
 };
 
-export default ProductCard; 
+export default ProductCard;
