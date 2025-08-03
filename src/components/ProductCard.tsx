@@ -19,7 +19,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, index }) => {
   return (
     <div 
       className={`${theme.colors.surface} ${theme.colors.border} border ${theme.layout.borderRadius} ${theme.spacing.md} ${theme.shadow} cursor-pointer ${theme.layout.transition} ${
-        currentTheme === 'theme2' ? 'flex flex-row gap-4 min-h-[120px] max-h-[140px] hover-lift overflow-hidden' : 
+        currentTheme === 'theme2' ? 'flex flex-row gap-4 min-h-[150px] max-h-[180px] hover-lift overflow-hidden' : 
         currentTheme === 'theme3' ? 'flex flex-col gap-3 theme-3-card max-h-[500px] overflow-hidden' : 
         'flex flex-col gap-3 hover-lift'
       } animate-slide-up`}
